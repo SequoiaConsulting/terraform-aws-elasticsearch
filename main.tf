@@ -207,5 +207,14 @@ locals {
     }
   ]
 
+}
 
+resource "null_resource" "dependency_setter" {
+  depends_on = [
+    "aws_elasticsearch_domain.es_domain",
+  ]
+}
+
+output "depended_on" {
+  value = "${null_resource.dependency_setter.id}"
 }
