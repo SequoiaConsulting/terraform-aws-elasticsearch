@@ -69,13 +69,13 @@ resource "aws_elasticsearch_domain" "es_domain" {
   }
 
   # vpc_options
-  dynamic "vpc_options" {
-    for_each = local.vpc_options
-    content {
-      security_group_ids = lookup(vpc_options.value, "security_group_ids")
-      subnet_ids         = lookup(vpc_options.value, "subnet_ids")
-    }
-  }
+//  dynamic "vpc_options" {
+//    for_each = local.vpc_options
+//    content {
+//      security_group_ids = lookup(vpc_options.value, "security_group_ids")
+//      subnet_ids         = lookup(vpc_options.value, "subnet_ids")
+//    }
+//  }
 
   # log_publishing_options
   dynamic "log_publishing_options" {
@@ -110,9 +110,9 @@ resource "aws_elasticsearch_domain" "es_domain" {
   tags = var.tags
 
   # Service-linked role to give Amazon ES permissions to access your VPC
-  depends_on = [
-    aws_iam_service_linked_role.es,
-  ]
+//  depends_on = [
+//    aws_iam_service_linked_role.es,
+//  ]
 
 }
 
